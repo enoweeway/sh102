@@ -24,7 +24,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>54</h3>
+                        <h3>95</h3>
 
                         <p>Barangays</p>
                     </div>
@@ -41,7 +41,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>2</h3>
+                        <h3>3</h3>
 
                         <p>Cities</p>
                     </div>
@@ -58,7 +58,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>2</h3>
 
                         <p>Doctors</p>
                     </div>
@@ -70,43 +70,415 @@
                     ></a>
                 </div>
             </div>
-            <!-- ./col -->
         </div>
-        <!-- /.row -->
+        <!-- Graph -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <i class="fas fa-chart-bar"></i>
-                            Communicable Diseases
-                        </h3>
+                    <h3 class="card-title">
+                        <!-- Diseases List -->
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    id="communicablediseases-tab"
+                                    data-toggle="tab"
+                                    href="#communicablediseases"
+                                    role="tab"
+                                    aria-controls="home"
+                                    aria-selected="true"
+                                    style="color: black;"
+                                >
+                                    <i class="fas fa-chart-bar"></i>
+                                    Communicable Diseases
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link"
+                                    id="noncommunicablediseases-tab"
+                                    data-toggle="tab"
+                                    href="#noncommunicablediseases"
+                                    role="tab"
+                                    aria-controls="profile"
+                                    aria-selected="false"
+                                    style="color: black;"
+                                >
+                                    <i class="fas fa-chart-bar"></i>
+                                    Non Communicable Diseases
+                                </a>
+                            </li>
+                        </ul>
+                    </h3>
+                    <!-- Diseases Content -->
+                    <div class="tab-content" id="myTabContent">
+                        <div
+                            class="tab-pane fade show active"
+                            id="communicablediseases"
+                            role="tabpanel"
+                            aria-labelledby="home-tab"
+                        >
+                            <div class="card-body">
+                                <ul
+                                    class="nav nav-tabs"
+                                    id="myTab"
+                                    role="tablist"
+                                >
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link active"
+                                            id="tuberculosis-tab"
+                                            data-toggle="tab"
+                                            href="#ebola"
+                                            role="tab"
+                                            aria-controls="home"
+                                            aria-selected="true"
+                                            style="color: black;"
+                                            >Ebola</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="flu-tab"
+                                            data-toggle="tab"
+                                            href="#flu"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Flu</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="hepatitisa-tab"
+                                            data-toggle="tab"
+                                            href="#hepatitisa"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Hepatitis A</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="hepatitisa-tab"
+                                            data-toggle="tab"
+                                            href="#hepatitisb"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Hepatitis B</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="hivandaids-tab"
+                                            data-toggle="tab"
+                                            href="#hivandaids"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >HIV and AIDS</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="rabies-tab"
+                                            data-toggle="tab"
+                                            href="#rabies"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Rabies</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="tuberculosis-tab"
+                                            data-toggle="tab"
+                                            href="#tuberculosis"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Tuberculosis</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="zika-tab"
+                                            data-toggle="tab"
+                                            href="#zika"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Zika</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="std-tab"
+                                            data-toggle="tab"
+                                            href="#std"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Sexually Transmitted Disease</a
+                                        >
+                                    </li>
+                                </ul>
+                                <!-- Communicable Disease Graphs -->
+                                <div class="tab-content" id="myTabContent">
+                                    <div
+                                        class="tab-pane fade show active"
+                                        id="ebola"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="ebolaGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                    <div
+                                        class="tab-pane fade show"
+                                        id="flu"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="fluGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                    <div
+                                        class="tab-pane fade show"
+                                        id="hepatitisa"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="hepatitisaGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                    <div
+                                        class="tab-pane fade show"
+                                        id="hepatitisb"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="hepatitisbGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                    <div
+                                        class="tab-pane fade show"
+                                        id="hivandaids"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="hivandaidsGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                    <div
+                                        class="tab-pane fade show"
+                                        id="rabies"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="rabiesGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                    <div
+                                        class="tab-pane fade show"
+                                        id="tuberculosis"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="tuberculosisGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                    <div
+                                        class="tab-pane fade show"
+                                        id="zika"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="zikaGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                    <div
+                                        class="tab-pane fade show"
+                                        id="std"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id="stdGraph"
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="card-tools">
-                            <button
-                                type="button"
-                                class="btn btn-tool"
-                                data-card-widget="collapse"
-                            >
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-tool"
-                                data-card-widget="remove"
-                            >
-                                <i class="fas fa-times"></i>
-                            </button>
+                            <!-- /.card-body-->
+                        </div>
+                        <div
+                            class="tab-pane fade"
+                            id="noncommunicablediseases"
+                            role="tabpanel"
+                            aria-labelledby="profile-tab"
+                        >
+                            <div class="card-body">
+                                <ul
+                                    class="nav nav-tabs"
+                                    id="myTab"
+                                    role="tablist"
+                                >
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link active"
+                                            id="cancer-tab"
+                                            data-toggle="tab"
+                                            href="#cancer"
+                                            role="tab"
+                                            aria-controls="home"
+                                            aria-selected="true"
+                                            style="color: black;"
+                                            >Cancer</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="epilepsy-tab"
+                                            data-toggle="tab"
+                                            href="#epilepsy"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Epilepsy</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="heatstroke-tab"
+                                            data-toggle="tab"
+                                            href="#heatstroke"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Heat Stroke</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="hypertension-tab"
+                                            data-toggle="tab"
+                                            href="#hypertension"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Hypertension</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="diabetes-tab"
+                                            data-toggle="tab"
+                                            href="#diabetes"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Diabetes</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="obesityandoverweight-tab"
+                                            data-toggle="tab"
+                                            href="#obesityandoverweight"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Obesity and Overweight</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            class="nav-link"
+                                            id="alzheimersdisease-tab"
+                                            data-toggle="tab"
+                                            href="#alzheimersdisease"
+                                            role="tab"
+                                            aria-controls="profile"
+                                            aria-selected="false"
+                                            style="color: black;"
+                                            >Alzheimer’s Disease</a
+                                        >
+                                    </li>
+                                </ul>
+                                <!-- Communicable Disease Graphs -->
+                                <div class="tab-content" id="myTabContent">
+                                    <div
+                                        class="tab-pane fade show active"
+                                        id="tuberculosis"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab"
+                                    >
+                                        <canvas
+                                            id=""
+                                            width="400"
+                                            height="100"
+                                        ></canvas>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <canvas
-                            id="diseasesBarGraph"
-                            width="400"
-                            height="100"
-                        ></canvas>
-                    </div>
-                    <!-- /.card-body-->
                 </div>
             </div>
         </div>
