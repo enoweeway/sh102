@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <title>AdminLTE 3 | Dashboard</title>
+
+        <!-- Links & Styles -->
+        {% include 'dashboard/components/css.html' %}
+    </head>
+
+    <body class="hold-transition sidebar-mini">
+        <div class="wrapper">
+            
+            <!-- Navbar -->
+            {% include 'dashboard/layouts/navbar/main_navbar.html' %}
+
+            <!-- Main Sidebar  -->
+            {% include 'dashboard/layouts/sidebar/main_sidebar.html' %}
+
+            <!-- Content Wrapper-->
+            <div class="content-wrapper">
+                <!-- (Page header) -->
+                {% include 'dashboard/layouts/content/header_content.html' %}
+
+                <!-- Main content -->
+                {% include 'dashboard/layouts/content/main_content.html' %}
+                
+            </div>
+
+            <!-- Control Sidebar -->
+            {% include 'dashboard/layouts/aside/aside_control_sidebar.html' %}
+            <!-- /.control-sidebar -->
+
+            <!-- Main Footer -->
+            {% include 'dashboard/layouts/footer/main_footer.html' %}
+        </div>
+
+        <!-- Scripts -->
+        {% include 'dashboard/components/js.html' %}
+    </body>
+</html>
