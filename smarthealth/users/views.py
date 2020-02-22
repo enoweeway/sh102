@@ -2,7 +2,7 @@ from django.contrib.auth import login
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from .forms import LoginForm
+from .forms import LoginForm, CustomUserCreationForm
 
 
 def login_page(request):
@@ -22,3 +22,15 @@ def login_page(request):
     }
 
     return render(request, "auth/login.html", context)
+
+
+def SignUp(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.email = request.POST['email']
+            form.save()
+            return redirect('login')
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'auth/signup.html', {'form': form})

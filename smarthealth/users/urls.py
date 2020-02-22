@@ -6,4 +6,6 @@ app_name = 'users'
 
 urlpatterns = [
     path('login/', views.login_page, name='login'),
+
+    path('signup/', views.SignUp, name='signup'),
 ]
