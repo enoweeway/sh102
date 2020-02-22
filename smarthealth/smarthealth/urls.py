@@ -3,5 +3,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('dashboard.urls'))
+    path('', include('dashboard.urls'), name='home'),
+    path('users/', include('users.urls')),
+    path('users/', include('django.contrib.auth.urls')),
+    # path('login/', include('users.urls')),
 ]
