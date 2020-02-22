@@ -5,7 +5,20 @@
     <title>Title</title>
 </head>
 <body>
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            <label style="color: white">{{ field.label_tag }}</label>
+            <br>
+            {{ field }}
+        </div>
+    {% endfor %}
 
+    <button type="submit" class="btn btn-success">Register</button>
+
+</form>
 
 </body>
 </html>
