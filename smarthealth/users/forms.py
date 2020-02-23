@@ -5,6 +5,7 @@ from django.core.validators import RegexValidator
 
 from .models import CustomUser
 from django.contrib.auth.models import AbstractUser
+from users.backend import EmailOrUsernameModelBackend
 
 
 class UniqueEmailForm:
@@ -29,8 +30,8 @@ class UniqueEmailForm:
             return self.cleaned_data['contact']
 
 class CustomUserCreationForm(UniqueEmailForm, UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'style': 'height: 10px;',
-                                                                           'placeholder': 'Email'}))
+    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     mobile_number = forms.CharField(required=True, max_length=11, validators=[RegexValidator(r'^\d{10,11}$')],
                               widget=forms.TextInput(attrs={'class': 'form-control', 'style': 'height: 10px;',
                                                             'placeholder': 'Mobile Number'}))
@@ -38,6 +39,7 @@ class CustomUserCreationForm(UniqueEmailForm, UserCreationForm):
                                             'style': 'height: 10px;', 'label': 'Test', 'placeholder': 'Password'}))
     password2 = forms.CharField(label='Re-type Password', widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'style': 'height: 10px;', 'label': 'Test', 'placeholder': 'Re-type Password'}))
+
     class Meta(UserCreationForm.Meta):
         model = CustomUser
         fields = ('username',
@@ -46,14 +48,16 @@ class CustomUserCreationForm(UniqueEmailForm, UserCreationForm):
                   'last_name',
                   'mobile_number',
                   'password1',
-                  'gender'
+                  'gender',
+                  'userType'
                   )
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control', 'style': 'height: 10px;', 'placeholder': 'Username'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'style': 'height: 10px;', 'placeholder': 'First Name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'style': 'height: 10px;', 'placeholder': 'Last Name'}),
             'mobile_number': forms.TextInput(attrs={'class': 'form-control', 'style': 'height: 10px;', 'placeholder': 'Mobile Number'}),
-            'gender': forms.Select(attrs={'class': 'form-control', 'style': 'height: 42px;', 'placeholder': 'Contact'})
+
+            'userType': forms.Select(attrs={'class': 'form-control', 'style': 'height: 42px;', 'value': 'User'})
         }
 
         def clean_email(self):
@@ -104,7 +108,7 @@ class LoginForm(forms.Form):
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
+        user = EmailOrUsernameModelBackend.authenticate(self, username=username, password=password)
         if not user or not user.is_active:
             raise forms.ValidationError("Sorry, that login was invalid. Please try again.")
         return self.cleaned_data
@@ -112,5 +116,5 @@ class LoginForm(forms.Form):
     def login(self, request):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
+        user = EmailOrUsernameModelBackend.authenticate(self, username=username, password=password)
         return user

@@ -7,17 +7,27 @@
 <body>
 <form method="post">
     {% csrf_token %}
-    {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field.errors }}
-            <label style="color: white">{{ field.label_tag }}</label>
-            <br>
-            {{ field }}
-        </div>
-    {% endfor %}
+    {% if request.user.is_superuser %}
+        Add User <br>
+        <input type="text" name="first_name" placeholder="First Name"><br/>
+        <input type="text" name="last_name" placeholder="Last Name"><br/>
+    {% elif request.user.userType == 'Doctor' %}
+        Add Patient<br>
+        <input type="text" name="first_name" placeholder="First Name"><br/>
+        <input type="text" name="last_name" placeholder="Last Name"><br/>
+        <input type="text" name="username" placeholder="Username"><br/>
+        {{ form.email }}<br/>
+        {{ form.gender }}<br/>
 
+        <select name="userType" hidden>
+            <option value="Patient" hidden>Patient</option>
+        </select>
+
+    {% elif request.user.userType == 'Client' %}
+        Add Doctor
+    {% endif %}
+    <br>
     <button type="submit" class="btn btn-success">Register</button>
-
 </form>
 
 </body>

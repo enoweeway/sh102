@@ -12,6 +12,7 @@
         />
         <span class="brand-text font-weight-light">SMARTH HEALTH 102</span>
     </a>
+{{ user.userType }}
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -25,11 +26,19 @@
                 />
             </div>
             <div class="info">
-                <a href="#" class="d-block">Dr. Bla Bla </a>
+                <a href="{% url 'users:profile' user.username %}" class="d-block">{{ user.username }}</a>
             </div>
         </div>
 
         <!-- Sidebar Menu -->
-        {% include 'dashboard/layouts/sidebar/menu_sidebar.html' %}
+        {% if user.userType == "Doctor" %}
+            {% include 'dashboard/layouts/sidebar/menu_sidebar_doctor.html' %}
+        {% elif user.userType == "Patient" %}
+            {% include 'dashboard/layouts/sidebar/menu_sidebar_patient.html' %}
+        {% elif user.is_superuser %}
+            {% include 'dashboard/layouts/sidebar/menu_sidebar_admin.html' %}
+        {% elif user.userType == "New" %}
+            {% include 'dashboard/layouts/sidebar/menu_sidebar_new.html' %}
+        {% endif %}
     </div>
 </aside>

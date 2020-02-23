@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if request.user.username == user.username %}
+    Firstname: {{ user.first_name }} <br>
+
+    Lastname: {{ user.last_name }} <br>
+    Username: {{ user.username }}
+
+{% else %}
+    Not your Profile
+{% endif %}
+
+
+
+</body>
+</html>

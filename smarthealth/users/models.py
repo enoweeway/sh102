@@ -50,19 +50,40 @@ class UserManager(models.Manager):
 
 
 class CustomUser(AbstractUser):
+    first_name = models.CharField(max_length=255, blank=False)
+    last_name = models.CharField(max_length=255, blank=False)
 
     mobile_number = models.CharField(max_length=11, null=True,blank=False, validators=[RegexValidator(r'^\d{10,11}$')])
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
     )
+    USER_TYPE = (
+        ('Doctor', 'Doctor'),
+        ('Patient', 'Patient'),
+        ('User', 'User')
+    )
+    userType = models. CharField(max_length=100, choices=USER_TYPE, blank=False, default='New')
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=False)
+    doctorPK = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return self.email
 
+
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+            return self.user.email
+
+    def get_object():
+        return get_object_or_404(UserProfile, user__username=self.kwargs['username'])
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    # bio = models.TextField(max_length=1000, blank=True)
+    # avatar = models.TextField(blank = True)
 
     def __str__(self):
             return self.user.email
