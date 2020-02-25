@@ -5,14 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-{% if request.user.username == user.username %}
+
+{% if request.user.username == user.username or request.user.is_superuser%}
     Firstname: {{ user.first_name }} <br>
 
     Lastname: {{ user.last_name }} <br>
     Username: {{ user.username }}
 
-{% else %}
-    Not your Profile
+
 {% endif %}
 
 

@@ -61,7 +61,7 @@ class user_profile(ListView):
 
 def get_user_profile(request, username):
     user = CustomUser.objects.get(username=username)
-    if request.user.username == user.username:
+    if request.user.username == user.username or request.user.is_superuser:
         return render(request, 'users/profile.html', {"user":user})
     else:
         return render(request, 'auth/error.html', {})
