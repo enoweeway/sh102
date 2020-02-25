@@ -12,4 +12,7 @@ urlpatterns = [
     url(r'^patients/', PatientListView.as_view(), name='patientList'),
     url(r'^profile/(?P<username>[\w.@+-]+)/$', views.get_user_profile, name='profile'),
     path('signup/', views.SignUp, name='signup'),
+    # url(r'^profile/(?P<username>[\w.@+-]+)/$', views.get_user_profile, name='profile'),
+    url(r'^edit/(?P<username>[\w.@+-]+)/$', views.edit_profile, name='edit_profile'),
+    # path('edit/', views.edit_profile, name='edit_profile'),
 ]

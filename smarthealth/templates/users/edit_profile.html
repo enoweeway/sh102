@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label style="color: red">{{ form.errors }}</label>
+
+    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+		                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		                        </div>
+                            {{ form.username }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+		                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		                        </div>
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+		                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		                        </div>
+                            {{ form.first_name }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+		                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		                        </div>
+                                {{ form.last_name }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+		                            <span class="input-group-text"> <i class="fa fa-genderless"></i> </span>
+		                        </div>
+                                {{ form.gender }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+		                            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+		                        </div>
+                                {{ form.mobile_number }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+{#		                            <span class="input-group-text">Currently: {{ user.image.url }} </span>#}
+		                        </div>
+                                <label style="color: white">{{ form.profile_image }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="container">
+{#                        <label style="color: navajowhite">Change your password by clicking this<a style="color: black" href="{% url 'users:change_password' %}"> link</a></label>#}
+                        <br>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+
+</form>
+
+</body>
+</html>

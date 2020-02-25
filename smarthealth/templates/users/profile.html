@@ -10,7 +10,9 @@
     Firstname: {{ user.first_name }} <br>
 
     Lastname: {{ user.last_name }} <br>
-    Username: {{ user.username }}
+    Username: {{ user.username }} <br>
+
+    <a href="{% url 'users:edit_profile' user.username %}">Edit Profile</a>
 
 
 {% endif %}

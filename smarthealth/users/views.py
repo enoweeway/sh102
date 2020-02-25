@@ -5,7 +5,7 @@ from users.backend import EmailOrUsernameModelBackend
 
 # Create your views here.
 from users.models import UserProfile, CustomUser
-from .forms import LoginForm, CustomUserCreationForm
+from .forms import LoginForm, CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth.hashers import make_password
 
 
@@ -51,20 +51,7 @@ def SignUp(request):
     return render(request, 'auth/signup.html', {'form': form})
 
 
-class user_profile(ListView):
-    model = UserProfile
-    count_hit = True
-    template_name = 'users/profile.html'
 
-    def get_object(self):
-        return UserProfile.objects.get(user=self.request.user)
-
-def get_user_profile(request, username):
-    user = CustomUser.objects.get(username=username)
-    if request.user.username == user.username or request.user.is_superuser:
-        return render(request, 'users/profile.html', {"user":user})
-    else:
-        return render(request, 'auth/error.html', {})
 
 
 class DoctorListView(ListView):
@@ -85,3 +72,42 @@ class PatientListView(ListView):
             'patient': patient
         }
         return context
+
+def edit_profile(request, username):
+    if request.user.is_superuser:
+        user = CustomUser.objects.get(username=username)
+    else:
+        user = CustomUser.objects.get(username=request.user.username)
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
+        # print(request.user.is_authenticated())
+        if form.is_valid():
+            # form.middle_name = request.POST['middle_name']
+            # form.profile_image = request.FILES.get('profile_image', user.profile_image)
+            form.save()
+            return redirect('users:profile', user)
+    else:
+        form = CustomUserChangeForm(instance=user)
+        args = {
+            'form': form,
+            'user': user
+            }
+        if user.username == request.user.username or request.user.is_superuser:
+            return render(request, 'users/edit_profile.html', args)
+        else:
+            return render(request, 'auth/error.html', {})
+
+class user_profile(ListView):
+    model = UserProfile
+    count_hit = True
+    template_name = 'users/profile.html'
+
+    def get_object(self):
+        return UserProfile.objects.get(user=self.request.user)
+
+def get_user_profile(request, username):
+    user = CustomUser.objects.get(username=username)
+    if request.user.username == user.username or request.user.is_superuser:
+        return render(request, 'users/profile.html', {"user":user})
+    else:
+        return render(request, 'auth/error.html', {})
